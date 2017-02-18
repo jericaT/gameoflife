@@ -16,6 +16,8 @@ public class LifeTest {
 		Life testLife = new LifeImpl();
 		GameState emptyState = new GameStateImpl(emptyStateInput);
 		assertEquals("An empty grid should stay the same", emptyStateInput, testLife.evolve(emptyState).toString());
+		//next run should be the same grid
+		//implement evolve method to run
 	}
 
 	//TODO implement further tests for the other cases in the instructions

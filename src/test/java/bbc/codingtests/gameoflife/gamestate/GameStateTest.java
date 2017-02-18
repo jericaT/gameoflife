@@ -5,6 +5,14 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class GameStateTest {
+	
+    @Test
+    public void testString() {
+        String input = ".*.\n*.*\n...";
+        GameState testState = new GameStateImpl(input);
+        assertEquals("Should be the same string",testState.toString(), input);
+    }
+
 
     @Test
     public void testParsing() {
