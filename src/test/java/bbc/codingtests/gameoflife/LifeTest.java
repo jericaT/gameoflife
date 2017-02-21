@@ -19,6 +19,34 @@ public class LifeTest {
 	}
 	
 	@Test
+	public void testUnderpopulation() {
+		String emptyStateInput = "...\n.**\n...";
+		String emptyStateInput2 = "...\n.*.\n.*.";
+
+		Life testLife = new LifeImpl();
+		GameState emptyState = new GameStateImpl(emptyStateInput);
+		GameState emptyState2 = new GameStateImpl(emptyStateInput2);
+		emptyState.loadData();
+		emptyState2.loadData();
+		assertNotSame("An cell with less than two neighbours should die", emptyStateInput, testLife.evolve(emptyState).toString());
+		assertNotSame("An cell with less than two neighbours should die", emptyStateInput2, testLife.evolve(emptyState2).toString());
+	}
+	
+	@Test
+	public void testOverCrowding() {
+		String emptyStateInput = ".*.\n***\n.*.";
+		String emptyStateInput2 = "..*\n***\n.*.";
+
+		Life testLife = new LifeImpl();
+		GameState emptyState = new GameStateImpl(emptyStateInput);
+		GameState emptyState2 = new GameStateImpl(emptyStateInput2);
+		emptyState.loadData();
+		emptyState2.loadData();
+		assertNotSame("An cell with more than 3 neighbours should die", emptyStateInput, testLife.evolve(emptyState).toString());
+		assertNotSame("An cell with more than 3 neighbours should die", emptyStateInput2, testLife.evolve(emptyState2).toString());
+	}
+	
+	@Test
 	public void testSurvival() {
 		String emptyStateInput = "...\n***\n.*.";
 
@@ -37,4 +65,5 @@ public class LifeTest {
 		emptyState.loadData();
 		assertEquals("Cell is created with 3 neighbouring cells", emptyStateInput, testLife.evolve(emptyState).toString());
 	}
+	
 }

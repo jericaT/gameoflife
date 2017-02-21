@@ -16,9 +16,6 @@ public class LifeImpl implements Life
 		cols = currentState.getCols();
 		nextGrid = new char[rows][cols];
 		
-		System.out.println("life rows:"+rows);
-		System.out.println("life cols:"+cols);
-		System.out.println("life grid: \n"+currentState.toString());
 		for(int i = 0; i < rows; i++ ){
 			for(int j = 0; j < cols; j++) {
 				if(currentState.isCellAliveAt(i, j) && neighbours(j,i,currentState) < 2) {
@@ -34,17 +31,7 @@ public class LifeImpl implements Life
 				}
 			}
 		}
-		System.out.println("life cell alive 0,0: "+currentState.isCellAliveAt(0, 0));
-		System.out.println("life point 1,1: "+nextGrid[1][1]);
 		currentState.setGrid(nextGrid);
-	
-	  System.out.println("life New Grid:");
-	  for(int i = 0; i < rows; i++){
-        	for(int j = 0; j < cols; j++){
-        		  System.out.print(nextGrid[i][j]);
-        	}
-        	System.out.println("");
-        }
 	
 		return currentState;
 	}
