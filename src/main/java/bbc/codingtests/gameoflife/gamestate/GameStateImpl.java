@@ -4,12 +4,18 @@ public class GameStateImpl implements GameState {
 	private String stringState;
 	private char[][] grid;
 	
-    //TODO implement this method such that live cells are represented as a '*' and dead cells are represented by a '.'
-    //TODO use newline ('\n') to separate rows
+    public char[][] getGrid(){
+    	return this.grid;
+    }
+    
+    @Override
+    public char[][] setGrid(char[][] input){
+    	return input = this.grid;
+    }
+	
     @Override
     public String toString() {
     	StringBuilder build = new StringBuilder();
-    	loadData();
     	
     	int check = 0;
     	
@@ -31,17 +37,13 @@ public class GameStateImpl implements GameState {
      	return build.toString();
     }
 
-    //TODO implement this constructor to parse an input string and return a new GameStateImpl object representing what you got in the string
-    //TODO as above, live cells are '*' and dead cells are '.' Rows are separated by newline ('\n')
+
     public GameStateImpl(String input) {
     	this.stringState = input;
     	
     }
 
-    //TODO implement this method according to explanation in GameState.java
     public boolean isCellAliveAt(int row, int col) {
-    	loadData();
-    	
         if(row < 0 || row > getRows() || col < 0 || col > getRows()){
         	return false;
         }else if(grid[row][col] == '*'){
@@ -82,4 +84,5 @@ public class GameStateImpl implements GameState {
     	int cols = splitInput[0].length();
     	return cols;
     }
+
 }
