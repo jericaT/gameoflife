@@ -19,6 +19,16 @@ public class LifeTest {
 	}
 	
 	@Test
+	public void testOne() {
+		String emptyStateInput = "...\n.*.\n...";
+
+		Life testLife = new LifeImpl();
+		GameState emptyState = new GameStateImpl(emptyStateInput);
+		emptyState.loadData();
+		assertNotSame("An grid with one cell should die", emptyStateInput, testLife.evolve(emptyState).toString());
+	}
+	
+	@Test
 	public void testUnderpopulation() {
 		String emptyStateInput = "...\n.**\n...";
 		String emptyStateInput2 = "...\n.*.\n.*.";
