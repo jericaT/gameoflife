@@ -18,13 +18,13 @@ public class LifeImpl implements Life
 		
 		for(int i = 0; i < rows; i++ ){
 			for(int j = 0; j < cols; j++) {
-				if(currentState.isCellAliveAt(i, j) && neighbours(j,i,currentState) < 2) {
+				if(currentState.isCellAliveAt(i, j) && neighbours(j,i) < 2) {
 					nextGrid[i][j] = '.';
-				} else if(currentState.isCellAliveAt(i, j) && neighbours(j,i,currentState) > 3) {
+				} else if(currentState.isCellAliveAt(i, j) && neighbours(j,i) > 3) {
 					nextGrid[i][j] = '.';
-				} else if(currentState.isCellAliveAt(i, j) && (neighbours(j,i,currentState) == 2 || neighbours(j,i,currentState) == 3)) {
+				} else if(currentState.isCellAliveAt(i, j) && (neighbours(j,i) == 2 || neighbours(j,i) == 3)) {
 					nextGrid[i][j] = '*';
-				} else if(!currentState.isCellAliveAt(i, j) && neighbours(j,i,currentState) == 3) { //checks for cell not alive
+				} else if(!currentState.isCellAliveAt(i, j) && neighbours(j,i) == 3) { //checks for cell not alive
 					nextGrid[i][j] = '*';
 				} else{
 					nextGrid[i][j] = '.'; //keep '.' as dead cell
@@ -37,11 +37,7 @@ public class LifeImpl implements Life
 	}
 	
 	//check and count neighbours for specific cell
-	public int neighbours(int x, int y, GameState curState) {
-		grid = curState.getGrid();
-		rows = curState.getRows();
-		cols = curState.getCols();
-		
+	public int neighbours(int x, int y) {
 		int neighCount = 0;
 		
 		int iStart;
@@ -52,10 +48,10 @@ public class LifeImpl implements Life
 		}
 		
 		int iFinish;
-		if(y < rows-1) {
+		if(y < grid.length-1) {
 			iFinish = y+1;
 		} else {
-			iFinish = rows-1;
+			iFinish = grid.length-1;
 		}
 		
 		int jStart;
@@ -66,10 +62,10 @@ public class LifeImpl implements Life
 		}
 		
 		int jFinish;
-		if(x < cols-1) {
+		if(x < grid[0].length-1) {
 			jFinish = x+1;
 		} else {
-			jFinish = cols-1;
+			jFinish = grid[0].length-1;
 		}
 		
 		for(int i = iStart; i <= iFinish; i++) {
