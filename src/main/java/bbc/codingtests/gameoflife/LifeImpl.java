@@ -48,10 +48,10 @@ public class LifeImpl implements Life
 		}
 		
 		int iFinish;
-		if(y < grid.length-1) {
+		if(y < rows-1) {
 			iFinish = y+1;
 		} else {
-			iFinish = grid.length-1;
+			iFinish = rows-1;
 		}
 		
 		int jStart;
@@ -62,10 +62,10 @@ public class LifeImpl implements Life
 		}
 		
 		int jFinish;
-		if(x < grid[0].length-1) {
+		if(x < cols-1) {
 			jFinish = x+1;
 		} else {
-			jFinish = grid[0].length-1;
+			jFinish = cols-1;
 		}
 		
 		for(int i = iStart; i <= iFinish; i++) {
@@ -75,6 +75,7 @@ public class LifeImpl implements Life
 		}
 		
 		neighCount -= grid[y][x];
+		
 		return neighCount;
 	}
 	

@@ -19,14 +19,11 @@ public class GameStateImpl implements GameState {
     	
     	int check = 0;
     	
-    	System.out.println("toString:");
         for(int i = 0; i < getRows(); i++){
         	for(int j = 0; j < getCols(); j++){
-        		System.out.print("["+grid[i][j]+"]");
         		build.append(grid[i][j]);
         		
         	}
-        	System.out.println("");
         	if(check != getRows()-1){
         		build.append("\n");
             	check++;
@@ -60,14 +57,6 @@ public class GameStateImpl implements GameState {
         	for(int j = 0; j < getCols(); j++){
         			grid[i][j] = splitInput[i].charAt(j);
         	}
-        }
-        
-        System.out.println("loadData:");
-        for(int i = 0; i < getRows(); i++){
-        	for(int j = 0; j < getCols(); j++){
-        		  System.out.print(grid[i][j]);
-        	}
-        	System.out.println("");
         }
     }
 
